@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/myFirstJFace/myFirstJFace.iml" filepath="$PROJECT_DIR$/myFirstJFace/myFirstJFace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/window/window.iml" filepath="$PROJECT_DIR$/window/window.iml" />
     </modules>
   </component>
 </project>
