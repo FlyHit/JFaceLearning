@@ -4,10 +4,14 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+
+import java.io.IOException;
 
 public class AskForContact extends WizardPage {
     private Button no;
@@ -30,10 +34,33 @@ public class AskForContact extends WizardPage {
         new Label(composite, SWT.LEFT).setText("A.");
         no = new Button(composite, SWT.RADIO);
         no.setText("不，我不想留联系方式");
-        no.setSelection(true);
+        no.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                WizardTest.dialogSettings.put("contact", "No");
+            }
+        });
         new Label(composite, SWT.LEFT).setText("B.");
         yes = new Button(composite, SWT.RADIO);
         yes.setText("恩，我愿意留下联系方式");
+        yes.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                WizardTest.dialogSettings.put("contact", "Yes");
+            }
+        });
+
+        try {
+            WizardTest.dialogSettings.load("dialog.xml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (WizardTest.dialogSettings.get("contact").equals("No")) {
+            no.setSelection(true);
+        } else if (WizardTest.dialogSettings.get("contact").equals("Yes")) {
+            yes.setSelection(true);
+        }
+
         setControl(composite);
     }
 

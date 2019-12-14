@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="bookSurvey">
+	<item value="2" key="Q1"/>
+	<item value="2" key="Q2"/>
+	<item value="No" key="contact"/>
+</section>

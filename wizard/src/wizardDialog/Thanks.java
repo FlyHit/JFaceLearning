@@ -18,6 +18,7 @@ public class Thanks extends WizardPage {
         Composite composite = new Composite(parent, SWT.NONE);
         composite.setLayout(new FillLayout());
         new Label(composite, SWT.CENTER).setText("感谢您的支持");
+
         setControl(composite);
     }
 }
